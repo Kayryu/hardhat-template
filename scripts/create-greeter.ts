@@ -1,8 +1,8 @@
 import { ethers, upgrades } from "hardhat";
 
 async function main() {
-  const greeterFactory = await ethers.getContractFactory("Greeter");
-  const greeter = await upgrades.deployProxy(greeterFactory, ['Hello, world!']);
+  const greeterFactory = await ethers.getContractFactory("GreeterV1");
+  const greeter = await upgrades.deployProxy(greeterFactory, ['Hello, world!'], { initializer: 'initialize' });
   console.log(greeter.deployTransaction.hash);
 
   await greeter.deployed();

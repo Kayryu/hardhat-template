@@ -45,4 +45,12 @@ docker-compose exec hardhat accounts # fetch list of default network accounts
 docker-compose exec hardhat balance <address> # Get balance for an address
 docker-compose exec hardhat send --from <address> --to <address> --amount 10 # Send ETH from one address to another
 docker-compose exec hardhat blockNumber # Get the current blocknumber
+```
 
+## Upgrade
+The upgrade contract use the [Openzeppelin](https://docs.openzeppelin.com/upgrades-plugins/1.x/)
+
+```bash
+npx hardhat run ./scripts/create-greeter.ts --network localhost
+npx hardhat run ./scripts/upgrade-greeter.ts --network localhost
+```

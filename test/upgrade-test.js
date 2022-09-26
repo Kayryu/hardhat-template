@@ -3,8 +3,8 @@ const { ethers, upgrades } = require("hardhat");
 
 describe("Upgrade Greeter", function() {
   it("Should upgrade greeter v2", async function() {
-        const Greeter = await ethers.getContractFactory("Greeter");
-        const greeter = await (upgrades.deployProxy(Greeter, ['Hello, world!'], { initializer: 'initialize' }));
+        const GreeterV1 = await ethers.getContractFactory("GreeterV1");
+        const greeter = await (upgrades.deployProxy(GreeterV1, ['Hello, world!'], { initializer: 'initialize' }));
         await greeter.deployed();
         
         expect(await greeter.greet()).to.equal("Hello, world!");
@@ -16,7 +16,6 @@ describe("Upgrade Greeter", function() {
         greeterV2 = (await upgrades.upgradeProxy(
             greeter.address, GreeterV2
         ));
-        expect(greeterV2.address).to.properAddress;
         expect(greeterV2.address).to.equal(greeterAddress);
 
         await greeterV2.setPrefix("Key");
