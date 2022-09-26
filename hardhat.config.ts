@@ -3,6 +3,7 @@ import 'dotenv/config'
 import { HardhatUserConfig } from 'hardhat/types'
 import 'hardhat-deploy'
 import 'hardhat-deploy-ethers'
+import '@openzeppelin/hardhat-upgrades'
 import tasks from './tasks'
 
 // Load tasks
@@ -16,7 +17,7 @@ if (!mnemonic) {
 }
 
 const config: HardhatUserConfig = {
-  solidity: "0.7.3",
+  solidity: "0.8.3",
   defaultNetwork: 'localhost',
   networks: {
     localhost: {
